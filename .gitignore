@@ -1,0 +1,86 @@
+# ======================================================================
+# 1. ARCHIVOS DE DATOS (RAW & PROCESSED)
+# ======================================================================
+# No subir datos crudos por seguridad y tamaño
+data/raw/*.csv
+data/raw/*.xlsx
+data/raw/*.json
+
+# Ignorar carpeta de datos procesados completa
+processed/
+
+# Ignorar cualquier archivo que empiece con copy_
+copy_*
+
+# Ignorar por extensiones en cualquier carpeta
+*.csv
+*.json
+*.xlsx
+*.xls
+
+# Archivos específicos del proyecto FitNess App [cite: 22, 28]
+actividad_usuarios.csv
+datos_demograficos.json
+suscripciones_usuarios.xlsx
+progreso_planes.csv
+interacciones_nutricion.xlsx
+
+# Datos procesados o temporales
+data/processed/*.csv
+data/processed/*.parquet
+data/temp/
+*.sqlite
+*.db
+
+# ======================================================================
+# 2. ARCHIVOS DE SALIDA Y REPORTES
+# ======================================================================
+# Resultados del análisis 
+outputs/figures/
+outputs/reports/
+*.png
+*.jpg
+*.pdf
+*.csv_report
+
+# ======================================================================
+# 3. ENTORNOS VIRTUALES Y PYTHON
+# ======================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.env
+.venv
+poetry.lock
+requirements.txt.log
+
+# ======================================================================
+# 4. JUPYTER NOTEBOOKS
+# ======================================================================
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+# Opcional: si quieres subir los notebooks pero no los resultados de las celdas
+# (Requiere herramientas como nbstripout)
+
+# ======================================================================
+# 5. CONFIGURACIÓN DE IDE (VS Code, PyCharm, etc)
+# ======================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================================================================
+# 6. SISTEMA OPERATIVO
+# ======================================================================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
