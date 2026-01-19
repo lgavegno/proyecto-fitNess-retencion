@@ -7,7 +7,7 @@ data/raw/*.xlsx
 data/raw/*.json
 
 # Ignorar carpeta de datos procesados completa
-processed/
+data/processed/
 
 # Ignorar cualquier archivo que empiece con copy_
 copy_*
