@@ -1,0 +1,346 @@
+FASE 0: DEFINICIÓN DEL PROYECTO
+
+Análisis de Retención de Usuarios - FitNess App
+________________________________________
+Fecha de inicio: 19 de Enero 2026
+Analista responsable: Leandro Gavegno
+Versión: 1.0
+Estado: En planificación
+________________________________________
+1. CONTEXTO DEL NEGOCIO
+
+1.1 Descripción de la Empresa
+FitNess App (Nombre Ficticio) es una aplicación móvil de fitness y bienestar que ofrece:
+•	Planes de entrenamiento personalizados
+•	Seguimiento nutricional
+•	Clases en vivo y on-demand
+•	Comunidad de usuarios
+Modelo de negocio: Suscripción mensual, trimestral y anual
+Usuarios activos: ~15,000 usuarios registrados
+Mercado objetivo: Personas de 18-45 años interesadas en fitness y bienestar
+
+1.2 Situación Actual
+La aplicación ha experimentado un crecimiento acelerado gracias a inversiones significativas en marketing digital. Sin embargo, enfrenta un problema crítico de retención que amenaza la sostenibilidad del modelo de negocio.
+Datos clave del problema:
+•	Tasa de abandono al primer mes: 65% (vs 40% benchmark industria)
+•	Tasa de renovación de suscripción: 35% (objetivo: 60%)
+•	Usuarios que NO completan su primer plan: 70%
+•	Impacto financiero estimado: Pérdida de $450K USD anuales en MRR (Monthly Recurring Revenue)
+Síntomas observados:
+•	Alta conversión en registro (gracias a marketing)
+•	Baja activación (usuarios no completan onboarding)
+•	Abandono masivo entre días 7-14
+•	Notificaciones genéricas con CTR < 5%
+________________________________________
+2. DEFINICIÓN DEL PROBLEMA DE NEGOCIO
+2.1 Problema Central
+FitNess App no puede identificar proactivamente a usuarios en riesgo de abandono ni personalizar su experiencia, lo que resulta en:
+1.	Alta tasa de churn (65%) en el primer mes de uso
+2.	Bajo engagement: Solo 30% de usuarios completan su primer entrenamiento
+3.	Estrategia de retención genérica sin segmentación basada en comportamiento
+4.	Desconocimiento del contenido efectivo para mantener usuarios activos
+2.2 Causa Raíz
+La información de los usuarios está fragmentada en múltiples sistemas sin capacidad de análisis unificado:
+Sistema	Datos	Problema
+Base datos de actividad	Sesiones, clics, eventos	No vinculado con suscripciones
+CRM de suscripciones	Pagos, renovaciones	No vinculado con comportamiento
+Analytics de contenido	Popularidad de videos/planes	No vinculado con retención
+Demografía de usuarios	Edad, género, nivel fitness	Almacenado en formato JSON disperso
+Resultado: Imposibilidad de correlacionar comportamiento → retención → contenido efectivo
+
+2.3 Impacto del Problema
+Impacto Financiero
+•	Pérdida anual estimada: $450K USD en MRR no capturado
+•	CAC (Costo de Adquisición de Cliente): $25 USD
+•	LTV actual: $35 USD (muy bajo por alta tasa de churn)
+•	LTV objetivo: $90 USD (con retención mejorada)
+Impacto Operativo
+•	Equipo de marketing invierte en adquisición pero no en retención
+•	Equipo de producto crea contenido "a ciegas" sin data
+•	Atención al cliente reactiva (solo cuando ya cancelaron)
+Impacto Estratégico
+•	Crecimiento no sostenible (depende de adquisición continua)
+•	Baja ventaja competitiva (competidores con mejor retención ganan)
+•	Riesgo de percepción negativa de marca
+________________________________________
+3. STAKEHOLDERS Y AUDIENCIA
+3.1 Stakeholders Primarios (Tomadores de decisión)
+Stakeholder	Rol	Interés en el proyecto	Poder de decisión
+CEO / Dirección General	Estrategia global	ROI del proyecto, crecimiento sostenible	 Alto
+VP de Producto	Roadmap de features	Qué funcionalidades priorizar	 Alto
+Director de Marketing	Estrategia de retención	Segmentación, personalización	 Alto
+CFO	Impacto financiero	Reducción de churn, aumento LTV	 Medio
+3.2 Stakeholders Secundarios (Ejecutores)
+Stakeholder	Rol	Cómo usarán los resultados
+Equipo de Producto	Desarrollo de features	Implementar mejoras en onboarding, gamificación
+Equipo de Marketing	Campañas de retención	Crear segmentos, personalizar mensajes
+Content Creators	Producción de contenido	Enfocar esfuerzo en contenido que retiene
+Customer Success	Atención al cliente	Contactar proactivamente usuarios en riesgo
+Data Engineering	Infraestructura de datos	Implementar pipeline de datos unificado
+3.3 Audiencia de los Entregables
+Presentación Ejecutiva (5 slides):
+•	Audiencia: CEO, VP Producto, Director Marketing, CFO
+•	Formato: Insights clave + recomendaciones accionables
+•	Tiempo: 15 minutos
+Dashboard Interactivo (Power BI):
+•	Audiencia: Equipo de Producto, Marketing, Customer Success
+•	Uso: Monitoreo continuo de métricas de retención
+Informe Técnico (30 páginas):
+•	Audiencia: Equipo de Data, Producto (técnico)
+•	Contenido: Metodología, código, análisis detallado
+________________________________________
+4. OBJETIVOS SMART DEL PROYECTO
+Objetivo Principal
+Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificación de patrones de comportamiento que permitan implementar estrategias de retención personalizadas, en un plazo de 12 semanas.
+Objetivos Específicos SMART
+Objetivo 1: Diagnóstico de Abandono
+•	Specific: Identificar las 5 principales causas de abandono analizando diferencias de comportamiento entre usuarios retenidos vs churned
+•	Measurable: Documentar al menos 5 patrones estadísticamente significativos (p-value < 0.05)
+•	Achievable: Dataset disponible con 11,600 registros de actividad
+•	Relevant: Permite enfocar esfuerzos de retención en causas reales
+•	Time-bound: Semanas 1-2 del proyecto
+Entregable: Informe "Diagnóstico de Causas de Abandono" con análisis estadístico
+________________________________________
+Objetivo 2: Segmentación de Usuarios en Riesgo
+•	S: Crear modelo de segmentación que clasifique usuarios en 3 grupos: Alto riesgo, Medio riesgo, Bajo riesgo de abandono
+•	M: Lograr que el modelo identifique correctamente al 80% de usuarios que abandonarán (recall ≥ 80%)
+•	A: Variables de comportamiento disponibles (frecuencia sesiones, % completado, días activos)
+•	R: Permite activar estrategias proactivas de retención
+•	T: Semanas 2-3 del proyecto
+Entregable: Algoritmo de scoring de riesgo + Dashboard con segmentos
+________________________________________
+Objetivo 3: Identificación de Contenido Efectivo
+•	S: Determinar qué tipos de planes de entrenamiento y contenido nutricional tienen mayor correlación con retención (r > 0.6)
+•	M: Rankear top 10 planes por tasa de retención de usuarios que los completaron
+•	A: Dataset de progreso_planes.csv e interacciones_nutricion.xlsx disponibles
+•	R: Permite optimizar estrategia de contenido y recomendaciones personalizadas
+•	T: Semanas 2-3 del proyecto
+Entregable: Reporte "Contenido de Alto Impacto en Retención"
+________________________________________
+Objetivo 4: Optimización de Onboarding
+•	S: Identificar los 3-5 "eventos clave" durante el onboarding (primeros 7 días) que predicen retención a 30 días
+•	M: Cuantificar el impacto de cada evento (ej: "Completar perfil aumenta retención en 35%")
+•	A: Data de actividad_usuarios.csv con timestamps detallados
+•	R: Permite rediseñar flujo de onboarding para maximizar activación
+•	T: Semanas 1-2 del proyecto
+Entregable: Mapa de "Customer Journey - Primeros 7 días críticos"
+________________________________________
+Objetivo 5: Recomendaciones Accionables
+•	S: Generar 10 recomendaciones priorizadas (alta/media/baja prioridad) basadas en hallazgos del análisis
+•	M: Cada recomendación con impacto cuantificado (ej: "Reducir churn en 8%", "Aumentar LTV en $15")
+•	A: Insights de objetivos 1-4 + benchmarks de industria
+•	R: Entregable final que guía plan de acción de 90 días
+•	T: Semana 4 del proyecto
+Entregable: Plan de Acción "Estrategia de Retención FitNess 2026"
+________________________________________
+5. PREGUNTAS DE NEGOCIO ORIENTADORAS
+5.1 Preguntas Primarias (Críticas para el negocio)
+Estas preguntas DEBEN ser respondidas para cumplir objetivos:
+1.	¿Qué características distinguen a los usuarios que se quedan vs los que abandonan?
+o	Demográficas: edad, género, nivel fitness, ciudad
+o	Comportamiento: frecuencia de sesiones, duración, días activos
+o	Engagement: % plan completado, tipos de contenido consumido
+2.	¿En qué momento del ciclo de vida ocurre el mayor abandono?
+o	Día 1-7 (onboarding)
+o	Día 8-14 (primera barrera)
+o	Día 15-30 (antes de renovación)
+3.	¿Qué eventos/acciones predicen retención a 30 días?
+o	Completar perfil
+o	Finalizar primer entrenamiento
+o	Consumir contenido nutricional
+o	Interactuar con clases en vivo
+4.	¿Qué contenido (planes/videos) retiene más usuarios?
+o	Tipos de plan (cardio, fuerza, yoga, HIIT)
+o	Duración de planes (7 días, 14 días, 30 días)
+o	Nivel de dificultad (principiante, intermedio, avanzado)
+5.	¿Cómo varía la retención según método de pago y costo de suscripción?
+o	Mensual vs trimestral vs anual
+o	Tarjeta de crédito vs PayPal vs otros
+
+5.2 Preguntas Secundarias (Complementarias)
+Análisis adicionales que enriquecen el diagnóstico:
+6.	¿Existe estacionalidad en el abandono? (ej: pico en enero por propósitos año nuevo)
+7.	¿Qué canales de registro (fuente_registro) generan usuarios de mayor calidad/retención?
+8.	¿Hay diferencias geográficas significativas en retención?
+9.	¿Los usuarios que registran métricas de nutrición tienen mayor retención?
+10.	¿Cuál es la frecuencia óptima de notificaciones/emails para retener sin saturar?
+________________________________________
+6. INDICADORES CLAVE DE DESEMPEÑO (KPIs)
+6.1 KPIs de Retención (Primarios)
+KPI	Fórmula	Valor Actual	Objetivo (3 meses)	Fuente de Datos
+Tasa de Abandono (Churn Rate)	(Usuarios cancelados / Total usuarios) × 100	65%	45%	suscripciones_usuarios.xlsx
+Tasa de Retención a 30 días	(Usuarios activos día 30 / Nuevos usuarios) × 100	35%	55%	actividad_usuarios.csv
+Tasa de Renovación de Suscripción	(Renovaciones / Suscripciones vencidas) × 100	35%	60%	suscripciones_usuarios.xlsx
+6.2 KPIs de Engagement (Secundarios)
+KPI	Fórmula	Valor Actual	Objetivo	Fuente
+Tasa de Activación	(Usuarios que completan onboarding / Registros) × 100	30%	60%	actividad_usuarios.csv
+Frecuencia de Sesiones (semanal)	Promedio de sesiones por usuario activo por semana	2.1	4.0	actividad_usuarios.csv
+Tiempo Promedio en App (minutos/día)	Promedio de duración de sesiones	12 min	20 min	actividad_usuarios.csv (Duracion_Minutos)
+Tasa de Finalización de Planes	(Planes completados 100% / Total planes iniciados) × 100	18%	35%	progreso_planes.csv
+6.3 KPIs de Contenido (Terciarios)
+KPI	Descripción	Objetivo	Fuente
+Top 10 Planes por Retención	Planes cuyos usuarios tienen >70% retención	Identificar	progreso_planes.csv + suscripciones
+Ratio Consumo Nutrición	% usuarios que interactúan con nutrición	50%	interacciones_nutricion.xlsx
+6.4 KPIs Financieros (Impacto de negocio)
+KPI	Fórmula	Valor Actual	Objetivo	Impacto
+LTV (Lifetime Value)	ARPU × Vida promedio del cliente	$35	$90	+$55 por usuario
+MRR (Monthly Recurring Revenue)	Suma de suscripciones activas mensuales	Variable	+30%	+$135K/mes
+Payback Period	CAC / ARPU mensual	5 meses	3 meses	Mejora ROI marketing
+________________________________________
+7. ALCANCE Y LIMITACIONES DEL PROYECTO
+7.1 DENTRO DEL ALCANCE ✅
+Datos incluidos:
+•	Actividad de usuarios: 11,600 registros de eventos (sesiones, entrenamientos, clics)
+•	Datos demográficos: 1,000 usuarios con edad, género, nivel fitness, ciudad
+•	Suscripciones: 1,050 registros de estado, costos, métodos de pago
+•	Progreso de planes: 2,025 registros de avance en entrenamientos
+•	Interacciones nutrición: 1,200 registros de métricas nutricionales
+Análisis a realizar:
+1.	Análisis Exploratorio de Datos (EDA):
+o	Distribuciones de variables
+o	Detección de outliers
+o	Correlaciones bivariadas
+2.	Análisis de Retención:
+o	Cálculo de churn rate por cohorte
+o	Análisis de supervivencia (Kaplan-Meier)
+o	Identificación de puntos de fuga (funnel de activación)
+3.	Segmentación de Usuarios:
+o	Clustering (K-means) por comportamiento
+o	Segmentación RFM adaptada (Recency, Frequency, Monetary-engagement)
+o	Perfiles de usuarios de alto/bajo valor
+4.	Análisis de Contenido:
+o	Ranking de planes por tasa de finalización
+o	Correlación tipo_plan → retención
+o	Análisis de popularidad vs efectividad
+5.	Modelado Predictivo (Básico):
+o	Regresión logística para predecir churn
+o	Árbol de decisión para identificar reglas de abandono
+o	Scoring de riesgo de abandono
+Entregables:
+•	6 Notebooks de Jupyter documentados
+•	Dashboard interactivo en Power BI
+•	Informe ejecutivo (PDF, 5 páginas)
+•	Informe técnico completo (PDF, 30 páginas)
+•	Presentación de resultados (PPT, 15 slides)
+•	Dataset consolidado limpio
+•	Repositorio GitHub público
+Herramientas:
+•	Python 3.11 (Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn)
+•	Power BI Desktop
+•	Jupyter Notebook
+•	Excel (análisis preliminar)
+•	Git/GitHub (control de versiones)
+________________________________________
+7.2 FUERA DEL ALCANCE ❌
+No incluye:
+1.	Datos no disponibles:
+o	Datos de competencia (no hay benchmarking externo)
+o	Feedback cualitativo de usuarios (encuestas, NPS)
+o	Datos de marketing (inversión en campañas, canales específicos)
+o	Datos de soporte al cliente (tickets, quejas)
+o	Datos de uso de features específicas (botones clickeados en detalle)
+2.	Análisis no cubiertos:
+o	Análisis de sentimiento en redes sociales
+o	A/B testing experimental (solo análisis observacional)
+o	Forecasting de ingresos a largo plazo (>6 meses)
+o	Análisis de precio óptimo (no hay datos de elasticidad)
+3.	Implementación técnica:
+o	Desarrollo de sistema de alertas en producción
+o	Integración con CRM/plataforma de marketing
+o	Automatización de reportes (solo dashboards manuales)
+o	Deploy de modelos en producción
+4.	Aspectos de negocio:
+o	Diseño de nuevas features de producto
+o	Ejecución de campañas de marketing
+o	Negociación con proveedores de contenido
+o	Cambios en estrategia de pricing
+________________________________________
+7.3 SUPUESTOS CRÍTICOS
+1.	Calidad de datos: Se asume que los datos son representativos y no tienen sesgos sistemáticos de recolección
+2.	Definición de "usuario activo": Usuario que ha tenido al menos 1 sesión en los últimos 7 días
+3.	Definición de "abandono": Usuario que no renueva suscripción tras vencimiento y no tiene actividad en 30 días
+4.	Ventana de análisis: Se analizará comportamiento de usuarios registrados en los últimos 6 meses
+5.	Independencia de observaciones: Se asume que el comportamiento de un usuario no afecta significativamente a otros
+________________________________________
+7.4 LIMITACIONES CONOCIDAS
+1.	Tamaño de muestra limitado:
+o	Solo 1,000 usuarios en datos demográficos vs 11,600 registros de actividad
+o	Posible desbalance entre usuarios activos y churned
+2.	Datos históricos limitados:
+o	No se conoce el período temporal cubierto
+o	Puede haber estacionalidad no capturada
+3.	Fragmentación de datos:
+o	Archivos en múltiples formatos (CSV, JSON, Excel)
+o	Posibles inconsistencias en IDs de usuarios entre archivos
+o	Requiere proceso intensivo de unificación (ETL)
+4.	Variables faltantes:
+o	No hay datos de inversión en marketing por canal
+o	No hay información sobre features de producto usadas
+o	Falta información sobre el contenido específico (títulos de videos, nombres de planes)
+5.	Sesgo de supervivencia:
+o	Los usuarios activos actuales pueden no representar comportamiento de usuarios que ya abandonaron hace tiempo
+6.	Causalidad vs Correlación:
+o	Los análisis identificarán correlaciones, pero no necesariamente causalidad
+o	Recomendaciones deberán ser validadas con tests A/B
+________________________________________
+8. FUENTES DE DATOS
+8.1 Inventario de Datasets
+Archivo	Formato	Registros	Descripción	Calidad Esperada
+actividad_usuarios.csv	CSV	11,600	Eventos de actividad en la app	✅ Estructurado
+datos_demograficos.json	JSON	1,000	Perfil demográfico de usuarios	⚠️ Semi-estructurado
+suscripciones_usuarios.xlsx	Excel	1,050	Estado y pagos de suscripciones	✅ Estructurado
+progreso_planes.csv	CSV	2,025	Avance en planes de entrenamiento	✅ Estructurado
+interacciones_nutricion.xlsx	Excel	1,200	Métricas de nutrición registradas	✅ Estructurado
+8.2 Diccionario de Datos Consolidado
+Tabla 1: actividad_usuarios.csv (11,600 registros)
+Columna	Tipo	Descripción	Valores Ejemplo	Nulos Esperados
+ID_Actividad	String	PK - Identificador único del evento	"ACT_00001"	0%
+ID_Usuario	String	FK - Identificador del usuario	"USR_00123"	0%
+Fecha_Actividad	Date	Timestamp del evento	"2025-01-15"	0%
+Tipo_Evento	String	Categoría de acción	"inicio_sesion", "entrenamiento_completado", "video_visto"	0%
+Duracion_Minutos	Float	Duración del evento en minutos	25.5	5% (eventos instantáneos)
+ID_Contenido	String	FK - Contenido asociado al evento	"PLAN_045", "VIDEO_123"	30% (no todos los eventos tienen contenido)
+Valores únicos esperados en Tipo_Evento:
+•	inicio_sesion
+•	entrenamiento_completado
+•	video_visto
+•	articulo_leido
+•	plan_iniciado
+•	perfil_completado
+•	clase_en_vivo_asistida
+________________________________________
+Tabla 2: datos_demograficos.json (1,000 registros)
+Columna	Tipo	Descripción	Valores Ejemplo	Nulos Esperados
+ID_Usuario	String	PK - Identificador del usuario	"USR_00123"	0%
+Edad	Integer	Edad del usuario en años	28	5%
+Genero	String	Género del usuario	"Masculino", "Femenino", "Otro"	5%
+Nivel_Fitness	String	Nivel autodeclarado	"Principiante", "Intermedio", "Avanzado"	10%
+Fuente_Registro	String	Canal de adquisición	"Facebook", "Google", "Referido", "Organico"	0%
+Ciudad	String	Ciudad de residencia	"Buenos Aires", "Córdoba", "Rosario"	10%
+________________________________________
+Tabla 3: suscripciones_usuarios.xlsx (1,050 registros)
+Columna	Tipo	Descripción	Valores Ejemplo	Nulos Esperados
+ID_Suscripcion	String	PK - Identificador de suscripción	"SUB_00456"	0%
+ID_Usuario	String	FK - Identificador del usuario	"USR_00123"	0%
+Fecha_Inicio	Date	Fecha de inicio de suscripción	"2025-01-01"	0%
+Estado_Suscripcion	String	Estado actual	"Activa", "Cancelada", "Vencida", "Renovada"	0%
+Costo_Suscripcion_USD	Float	Precio mensual	9.99, 24.99, 79.99	0%
+Metodo_Pago	String	Forma de pago	"Tarjeta_Credito", "PayPal", "Transferencia"	5%
+Nota: Un usuario puede tener múltiples suscripciones (renovaciones)
+________________________________________
+Tabla 4: progreso_planes.csv (2,025 registros)
+Columna	Tipo	Descripción	Valores Ejemplo	Nulos Esperados
+ID_Progreso	String	PK - Identificador de progreso	"PRG_00789"	0%
+ID_Usuario	String	FK - Identificador del usuario	"USR_00123"	0%
+ID_Plan	String	FK - Identificador del plan	"PLAN_045"	0%
+Porcentaje_Completado	Float	% de finalización (0-100)	75.5	0%
+Fecha_Actualizacion	Date	Última modificación	"2025-01-20"	0%
+Tipo_Plan	String	Categoría del plan	"Cardio", "Fuerza", "Yoga", "HIIT", "Perdida_Peso"	0%
+________________________________________
+Tabla 5: interacciones_nutricion.xlsx (1,200 registros)
+Columna	Tipo	Descripción	Valores Ejemplo	Nulos Esperados
+ID_Interaccion_Nutricion	String	PK - Identificador de interacción	"NUT_00321"	0%
+ID_Usuario	String	FK - Identificador del usuario	"USR_00123"	0%
+Fecha_Registro	Date	Fecha de la interacción	"2025-01-18"	0%
+Metrica_Registrada	String	Tipo de métrica	"Calorias", "Proteinas", "Agua", "	
+
