@@ -8,6 +8,7 @@ data/raw/*.json
 
 # Ignorar carpeta de datos procesados completa
 data/processed/
+data/
 
 # Ignorar cualquier archivo que empiece con copy_
 copy_*
