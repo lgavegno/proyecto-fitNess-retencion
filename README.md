@@ -98,6 +98,7 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 ├── README.md
 ├── requirements.txt
 ├── 01_exploracion_y_carga_fitness.ipynb
+├── 02_limpieza_ETL_unificacion.ipynb
 └── data/
     ├── docs/
     │   └── 00_fase0_planificacion/
@@ -107,6 +108,18 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
     ├── outputs/
     └── src/
 ```
+
+## 🚀 Estado de Avance del Proyecto
+
+### Fase 1: Diagnóstico y Carga (Completada ✅)
+* **Hito:** Identificación del "Churn Temprano". 
+* **Hallazgo Crítico:** Se confirmó que el **46.4% de los usuarios abandona la app en los primeros 7 días**, validando la importancia del Objetivo 4 (Optimización de Onboarding).
+
+### Fase 2: Unificación y Limpieza - ETL (Completada ✅)
+* **Hito:** Creación del Dataset Maestro.
+* **Integración:** Consolidación de 11,600 registros de actividad con datos demográficos y de suscripción.
+* **Limpieza:** Tratamiento del 100% de valores nulos (27,700 celdas corregidas) mediante imputación técnica.
+* **Calidad de Datos:** Dataset final con **0 nulos**, listo para el análisis predictivo.
 
 ## Tecnologías Utilizadas
 
