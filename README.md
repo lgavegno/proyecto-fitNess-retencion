@@ -120,6 +120,7 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 * **Integración:** Consolidación de 11,600 registros de actividad con datos demográficos y de suscripción.
 * **Limpieza:** Tratamiento del 100% de valores nulos (27,700 celdas corregidas) mediante imputación técnica.
 * **Calidad de Datos:** Dataset final con **0 nulos**, listo para el análisis predictivo.
+* **Identificación de la Paradoja del Progreso: Se detectó mediante análisis de boxplots que los usuarios en riesgo de abandono tienen un promedio de progreso mayor (~18%) que los usuarios activos (~13%), sugiriendo un patrón de "burnout" o fatiga temprana.
 
 ## Tecnologías Utilizadas
 
