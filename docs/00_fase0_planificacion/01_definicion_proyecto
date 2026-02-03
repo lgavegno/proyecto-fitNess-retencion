@@ -21,11 +21,13 @@ Mercado objetivo: Personas de 18-45 años interesadas en fitness y bienestar
 
 1.2 Situación Actual
 La aplicación ha experimentado un crecimiento acelerado gracias a inversiones significativas en marketing digital. Sin embargo, enfrenta un problema crítico de retención que amenaza la sostenibilidad del modelo de negocio.
+
 Datos clave del problema:
 •	Tasa de abandono al primer mes: 65% (vs 40% benchmark industria)
 •	Tasa de renovación de suscripción: 35% (objetivo: 60%)
 •	Usuarios que NO completan su primer plan: 70%
 •	Impacto financiero estimado: Pérdida de $450K USD anuales en MRR (Monthly Recurring Revenue)
+
 Síntomas observados:
 •	Alta conversión en registro (gracias a marketing)
 •	Baja activación (usuarios no completan onboarding)
@@ -33,19 +35,21 @@ Síntomas observados:
 •	Notificaciones genéricas con CTR < 5%
 ________________________________________
 2. DEFINICIÓN DEL PROBLEMA DE NEGOCIO
+
 2.1 Problema Central
 FitNess App no puede identificar proactivamente a usuarios en riesgo de abandono ni personalizar su experiencia, lo que resulta en:
 1.	Alta tasa de churn (65%) en el primer mes de uso
 2.	Bajo engagement: Solo 30% de usuarios completan su primer entrenamiento
 3.	Estrategia de retención genérica sin segmentación basada en comportamiento
 4.	Desconocimiento del contenido efectivo para mantener usuarios activos
+
 2.2 Causa Raíz
 La información de los usuarios está fragmentada en múltiples sistemas sin capacidad de análisis unificado:
-Sistema	Datos	Problema
-Base datos de actividad	Sesiones, clics, eventos	No vinculado con suscripciones
-CRM de suscripciones	Pagos, renovaciones	No vinculado con comportamiento
-Analytics de contenido	Popularidad de videos/planes	No vinculado con retención
-Demografía de usuarios	Edad, género, nivel fitness	Almacenado en formato JSON disperso
+Sistema	Datos	                                                                    Problema
+Base datos de actividad	Sesiones, clics, eventos	                                No vinculado con suscripciones
+CRM de suscripciones	Pagos, renovaciones	                                        No vinculado con comportamiento
+Analytics de contenido	Popularidad de videos/planes	                            No vinculado con retención
+Demografía de usuarios	Edad, género, nivel fitness	                                Almacenado en formato JSON disperso
 Resultado: Imposibilidad de correlacionar comportamiento → retención → contenido efectivo
 
 2.3 Impacto del Problema
@@ -64,19 +68,22 @@ Impacto Estratégico
 •	Riesgo de percepción negativa de marca
 ________________________________________
 3. STAKEHOLDERS Y AUDIENCIA
+
 3.1 Stakeholders Primarios (Tomadores de decisión)
-Stakeholder	Rol	Interés en el proyecto	Poder de decisión
+Stakeholder	                Rol	                Interés en el proyecto	Poder de decisión
 CEO / Dirección General	Estrategia global	ROI del proyecto, crecimiento sostenible	 Alto
 VP de Producto	Roadmap de features	Qué funcionalidades priorizar	 Alto
 Director de Marketing	Estrategia de retención	Segmentación, personalización	 Alto
 CFO	Impacto financiero	Reducción de churn, aumento LTV	 Medio
+
 3.2 Stakeholders Secundarios (Ejecutores)
-Stakeholder	Rol	Cómo usarán los resultados
+Stakeholder	                    Rol	                Cómo usarán los resultados
 Equipo de Producto	Desarrollo de features	Implementar mejoras en onboarding, gamificación
 Equipo de Marketing	Campañas de retención	Crear segmentos, personalizar mensajes
 Content Creators	Producción de contenido	Enfocar esfuerzo en contenido que retiene
 Customer Success	Atención al cliente	Contactar proactivamente usuarios en riesgo
 Data Engineering	Infraestructura de datos	Implementar pipeline de datos unificado
+
 3.3 Audiencia de los Entregables
 Presentación Ejecutiva (5 slides):
 •	Audiencia: CEO, VP Producto, Director Marketing, CFO
@@ -92,7 +99,9 @@ ________________________________________
 4. OBJETIVOS SMART DEL PROYECTO
 Objetivo Principal
 Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificación de patrones de comportamiento que permitan implementar estrategias de retención personalizadas, en un plazo de 12 semanas.
+
 Objetivos Específicos SMART
+
 Objetivo 1: Diagnóstico de Abandono
 •	Specific: Identificar las 5 principales causas de abandono analizando diferencias de comportamiento entre usuarios retenidos vs churned
 •	Measurable: Documentar al menos 5 patrones estadísticamente significativos (p-value < 0.05)
