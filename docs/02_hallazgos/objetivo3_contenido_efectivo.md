@@ -1,31 +1,31 @@
-# Objetivo 3: Análisis de Contenido y Efectividad de Planes
+# Objetivo 3: Análisis de Contenido y Efectividad de Planes (Datos Saneados)
 
 ## 📊 Metodología de Análisis
-Se calculó el **Índice de Efectividad** para cada categoría de entrenamiento, cruzando el promedio de avance real (`Porcentaje_Completado`) contra el nivel de riesgo estadístico (`Risk_Score`) de sus usuarios.
+Se calculó el **Índice de Efectividad** ($Progreso / Riesgo$) tras un proceso de saneamiento de datos (ETL Maestro) que eliminó 10,374 registros inconsistentes. El análisis actual se basa en 1,226 usuarios con trazabilidad completa.
 
 ## 🏆 Ranking de Efectividad por Tipo de Plan
 
-| Tipo de Plan | Completitud Promedio | Risk Score (1-10) | Índice de Efectividad |
-| :--- | :--- | :--- | :--- |
-| **Cardio** | 46.9% | 5.06 | **9.25** |
-| **HIIT** | 48.0% | 5.21 | **9.20** |
-| **Yoga** | 46.8% | 5.20 | **8.99** |
-| **Meditación** | 45.2% | 5.13 | **8.81** |
-| **Fuerza** | 44.5% | 5.36 | **8.31** |
-| **Sin Plan** | 0.0% | 7.49 | **0.00** |
+| Tipo de Plan   | Completitud Promedio | Risk Score (1-10) | Índice de Efectividad |
+| :------------- | :------------------- | :---------------- | :-------------------- |
+| **HIIT**       | 49.22%               | 4.25              | **11.57**             |
+| **Fuerza**     | 48.81%               | 4.31              | **11.31**             |
+| **Yoga**       | 46.05%               | 4.35              | **10.57**             |
+| **Cardio**     | 45.37%               | 4.35              | **10.41**             |
+| **Meditación** | 42.29%               | 4.72              | **8.95**              |
 
 ## 🔍 Hallazgos Clave
 
-### 1. El "Abismo" de los Usuarios Sin Plan
-El hallazgo más crítico es la existencia de **7,070 usuarios** (aprox. 61% de la muestra) que no tienen un plan asignado. Este grupo presenta un Risk Score de **7.49**, el más alto de toda la plataforma. 
-- **Insight**: La falta de una guía inmediata tras el registro es el principal predictor de abandono.
+### 1. Reivindicación de HIIT y Fuerza
+Contrario al análisis preliminar con datos ruidosos, los planes de **HIIT** y **Fuerza** son los motores de retención más potentes de la app. Presentan los niveles más bajos de riesgo y las tasas de finalización más altas (cercanas al 50%).
+- **Insight**: Los usuarios que eligen entrenamiento de alta intensidad o resistencia muestran un compromiso significativamente mayor.
 
-### 2. Cardio y HIIT como Pilares de Retención
-Los planes de **Cardio** y **HIIT** muestran el mejor equilibrio. Aunque HIIT tiene un riesgo ligeramente superior, es el que logra que los usuarios lleguen más lejos en sus rutinas (48% de progreso).
+### 2. El Riesgo en el Contenido "Soft"
+La **Meditación** se identifica ahora como el plan con menor efectividad. Presenta el Risk Score más alto (4.72) y la menor tasa de completitud (42.29%).
+- **Hipótesis**: Los usuarios que solo buscan contenido de bienestar mental podrían no estar encontrando el valor diario suficiente para mantener la suscripción frente a los que buscan resultados físicos tangibles.
 
-### 3. El Desafío de los Planes de Fuerza
-Los planes de **Fuerza** presentan la efectividad más baja entre los usuarios activos. Tienen la menor tasa de completitud (44.5%) y el mayor riesgo de abandono (5.36) dentro de los grupos con actividad.
-- **Hipótesis**: La dificultad percibida o la falta de equipo necesario podría estar frenando el progreso en esta categoría.
+### 3. Eliminación del Sesgo de "Sin Plan"
+Tras el saneamiento, se confirmó que los 7,070 usuarios "Sin Plan" detectados inicialmente eran inconsistencias de registro (logs huérfanos). La base actual de usuarios activos registrados siempre tiene un plan asociado.
 
 ## 💡 Recomendación Estratégica
-Para el Informe Ejecutivo, se sugiere proponer un flujo de **Onboarding Forzado** o sugerido, donde el usuario no pueda finalizar su registro sin elegir un plan de la categoría Cardio
+Enfocar las campañas de retención y marketing en los beneficios de los planes de **HIIT** y **Fuerza**, utilizándolos como "ganchos" de activación durante la primera semana, dado su alto índice de éxito.
+
