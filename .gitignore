@@ -36,13 +36,15 @@ data/temp/
 # ======================================================================
 # 2. ARCHIVOS DE SALIDA Y REPORTES
 # ======================================================================
-# Resultados del análisis 
-outputs/figures/
+# Ignorar reportes temporales
 outputs/reports/
-*.png
-*.jpg
-*.pdf
 *.csv_report
+
+# Permitir imágenes de documentación pero ignorar capturas temporales
+# (Comentamos *.png y *.jpg para que las figuras de los notebooks se suban)
+# *.png
+# *.jpg
+*.pdf
 
 # ======================================================================
 # 3. ENTORNOS VIRTUALES Y PYTHON

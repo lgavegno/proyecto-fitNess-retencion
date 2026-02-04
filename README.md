@@ -19,7 +19,7 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 - **Time-bound**: Semanas 1-2 del proyecto
 
 #### Objetivo 2: Segmentación de Usuarios en Riesgo (Semanas 2-3)
-- **Specific**: Crear modelo de segmentación que clasifique usuarios en 3 grupos: Alto riesgo, Medio riesgo, Bajo riesgo de abandono
+- **Specific**: Crear modelo de segmentación **Clustering K-Means ($k=3$)**, validado matemáticamente mediante el **Método del Codo**.
 - **Measurable**: Lograr que el modelo identifique correctamente al 80% de usuarios que abandonarán (recall ≥ 80%)
 - **Achievable**: Variables de comportamiento disponibles (frecuencia sesiones, % completado, días activos)
 - **Relevant**: Permite activar estrategias proactivas de retención
@@ -27,14 +27,14 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 
 #### Objetivo 3: Identificación de Contenido Efectivo (Semanas 2-3)
 - **Specific**: Determinar qué tipos de planes de entrenamiento y contenido nutricional tienen mayor correlación con retención (r > 0.6)
-- **Measurable**: Rankear top 10 planes por tasa de retención de usuarios que los completaron
+- **Measurable**: Calcular el **Índice de Efectividad ($Progreso / Riesgo$)**, resaltando que HIIT y Fuerza lideran la retención.
 - **Achievable**: Dataset de progreso_planes.csv e interacciones_nutricion.xlsx disponibles
 - **Relevant**: Permite optimizar estrategia de contenido y recomendaciones personalizadas
 - **Time-bound**: Semanas 2-3 del proyecto
 
 #### Objetivo 4: Optimización de Onboarding (Semanas 1-2)
-- **Specific**: Identificar los 3-5 "eventos clave" durante el onboarding (primeros 7 días) que predicen retención a 30 días
-- **Measurable**: Cuantificar el impacto de cada evento (ej: "Completar perfil aumenta retención en 35%")
+- **Specific**: Identificar los 3-5 "eventos clave" durante el onboarding, analizando el fenómeno de la **"Retención Fantasma"**.
+- **Measurable**: Cuantificar el impacto mediante el **Sticky Factor** para normalizar la curva de activación.
 - **Achievable**: Data de actividad_usuarios.csv con timestamps detallados
 - **Relevant**: Permite rediseñar flujo de onboarding para maximizar activación
 - **Time-bound**: Semanas 1-2 del proyecto
@@ -97,16 +97,18 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 ```
 ├── README.md
 ├── requirements.txt
-├── 01_exploracion_y_carga_fitness.ipynb
-├── 02_limpieza_ETL_unificacion.ipynb
-└── data/
-    ├── docs/
-    │   └── 00_fase0_planificacion/
-    │       └── 01_definicion_proyecto
-    ├── raw/
-    ├── processed/
-    ├── outputs/
-    └── src/
+├── docs/                      # Documentación centralizada
+│   ├── 00_fase0_planificacion/
+│   ├── 01_bitacora/           # bitacora_ingenieria.md (Archivo unificado)
+│   ├── 02_hallazgos/
+│   └── 03_entregables_finales/ # reporte_ejecutivo.md
+├── notebooks/                 # Jupyter Notebooks (01 al 06)
+│   └── figures/               # Gráficos exportados (Assets)
+├── data/
+│   ├── raw/                   # Datos originales
+│   ├── processed/             # df_maestro_unificado_scored.csv
+│   └── samples/               # sample_final.csv
+└── outputs/                   # Resultados finales
 ```
 
 ## 🚀 Estado de Avance del Proyecto
@@ -116,13 +118,17 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 * **Hallazgo Crítico:** Se confirmó que el **46.4% de los usuarios abandona la app en los primeros 7 días**, validando la importancia del Objetivo 4 (Optimización de Onboarding).
 
 ### Fase 2: Unificación y Limpieza - ETL (Completada ✅)
-* **Hito:** Creación del Dataset Maestro.
-* **Integración:** Consolidación de 11,600 registros de actividad con datos demográficos y de suscripción.
+* **Hito:** Creación del Dataset Maestro y Auditoría de Integridad.
+* **Auditoría:** Se realizó una purga de integridad referencial descartando el 89% de la muestra inicial por inconsistencias temporales y registros huérfanos.
+* **Integración:** Consolidación de **1,226 usuarios con trazabilidad 100% veraz** provenientes de 5 fuentes de datos.
 * **Limpieza:** Tratamiento del 100% de valores nulos (27,700 celdas corregidas) mediante imputación técnica.
-* **Calidad de Datos:** Dataset final con **0 nulos**, listo para el análisis predictivo.
-* **Identificación de la Paradoja del Progreso:** Se detectó mediante análisis de boxplots que los usuarios en riesgo de abandono tienen un promedio de progreso mayor (~18%) que los usuarios activos (~13%), sugiriendo un patrón de "burnout" o fatiga temprana.
+* **Identificación de la Paradoja del Progreso:** Se detectó que los usuarios en riesgo de abandono tienen un promedio de progreso mayor (~18%) que los activos (~13%), sugiriendo un patrón de fatiga temprana.
 
-### Fase 3: Análisis Exploratorio y Preparación para el Modelo (En Proceso)
+
+### Fase 3 & 4: Análisis Avanzado y Onboarding (Completada ✅)
+* **Hito:** Identificación de la ruptura de activación en el Día 0 (0% de efectividad inicial).
+* **Hallazgo:** El 100% de los usuarios retenidos se reactivan recién el Día 7 (Fenómeno de "Retención Fantasma").
+* **Dashboard:** Visualización final de KPIs y recomendaciones de negocio entregadas.
 
 
 ## Tecnologías Utilizadas
@@ -132,3 +138,14 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 - **Power BI** para dashboards interactivos
 - **Excel** para análisis preliminares
 - **Git/GitHub** para control de versiones
+
+## 🛠️ Cómo Ejecutar el Proyecto
+
+1. **Clonar el repositorio**: `git clone https://github.com/tu-usuario/Proyecto-FitnessApp.git`
+2. **Instalar dependencias**: `pip install -r requirements.txt`
+3. **Ejecución**: Abrir los cuadernos en la carpeta `/notebooks` y ejecutarlos en orden numérico (01 al 06) para reproducir el análisis completo.
+
+## 🏆 Conclusiones de Negocio
+- **Aha! Moment**: El contenido de **HIIT y Fuerza** es el principal motor de retención real.
+- **Fuga Crítica**: Se identificó una desconexión total en el Día 0; la app depende de estímulos de último momento (Día 7) para retener usuarios.
+- **Estrategia**: Se recomienda adelantar las notificaciones de reactivación al Día 3 para quebrar el patrón de abandono detectado.
