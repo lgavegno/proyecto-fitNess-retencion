@@ -99,7 +99,7 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 ├── requirements.txt
 ├── docs/                      # Documentación centralizada
 │   ├── 00_fase0_planificacion/
-│   ├── 01_bitacora/           # bitacora_ingenieria.md (Archivo unificado)
+│   ├── 01_bitacora/           # bitacora_ingenieria.md
 │   ├── 02_hallazgos/
 │   └── 03_entregables_finales/ # reporte_ejecutivo.md
 ├── notebooks/                 # Jupyter Notebooks (01 al 06)
@@ -111,24 +111,26 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 └── outputs/                   # Resultados finales
 ```
 
-## 🚀 Estado de Avance del Proyecto
+## Auditoría de Integridad & Calidad de Datos (Data Governance)
 
-### Fase 1: Diagnóstico y Carga (Completada ✅)
-* **Hito:** Identificación del "Churn Temprano". 
-* **Hallazgo Crítico:** Se confirmó que el **46.4% de los usuarios abandona la app en los primeros 7 días**, validando la importancia del Objetivo 4 (Optimización de Onboarding).
+Una de las fases más críticas de este proyecto fue el **Data Sanitization Pipeline**. Se procesó un dataset inicial ruidoso mediante un rigor de auditoría Senior:
 
-### Fase 2: Unificación y Limpieza - ETL (Completada ✅)
-* **Hito:** Creación del Dataset Maestro y Auditoría de Integridad.
-* **Auditoría:** Se realizó una purga de integridad referencial descartando el 89% de la muestra inicial por inconsistencias temporales y registros huérfanos.
-* **Integración:** Consolidación de **1,226 usuarios con trazabilidad 100% veraz** provenientes de 5 fuentes de datos.
-* **Limpieza:** Tratamiento del 100% de valores nulos (27,700 celdas corregidas) mediante imputación técnica.
-* **Identificación de la Paradoja del Progreso:** Se detectó que los usuarios en riesgo de abandono tienen un promedio de progreso mayor (~18%) que los activos (~13%), sugiriendo un patrón de fatiga temprana.
+- **Universe Refinement**: De 11,600 registros de actividad brutos, se identificó que el 89% presentaba inconsistencias de integridad referencial o stamps temporales corruptos.
+- **Integrity Purge**: Se aplicó una purga estricta para consolidar una muestra de **1,226 usuarios con trazabilidad 100% veraz**, garantizando que los insights no fueran artefactos de datos sucios.
+- **Imputación Técnica**: Tratamiento de **27,700 celdas nulas** mediante algoritmos de imputación basados en el perfil de usuario, evitando sesgos en el cálculo del Churn.
 
+## Metodología de Análisis Avanzado
 
-### Fase 3 & 4: Análisis Avanzado y Onboarding (Completada ✅)
-* **Hito:** Identificación de la ruptura de activación en el Día 0 (0% de efectividad inicial).
-* **Hallazgo:** El 100% de los usuarios retenidos se reactivan recién el Día 7 (Fenómeno de "Retención Fantasma").
-* **Dashboard:** Visualización final de KPIs y recomendaciones de negocio entregadas.
+### Algoritmos y Modelado Estadístico
+
+- **Clustering K-Means (k=3)**: Implementado para segmentar perfiles de riesgo, validando la estabilidad de los clusters mediante el **Método del Codo**.
+- **Cálculo de Sticky Factor**: Cuantificación de la adherencia al onboarding para identificar el **"Aha! Moment"**.
+- **Análisis de Correlación de Pearson**: Identificación de la relación directa entre el consumo de contenido de **HIIT/Fuerza** e la retención a largo plazo (r > 0.6).
+
+## Hallazgos de Ingeniería de Producto
+
+- **La Paradoja del Progreso**: Los usuarios churned mostraban una velocidad de progreso un **38% superior** a los retenidos en la primera semana, indicando un patrón de fatiga o expectativas poco realistas en el onboarding.
+- **Breakpoint Día 0**: Se detectó una inactividad crítica post-instalación. La curva de activación real se desplaza al Día 7, lo que denominamos **"Retención Fantasma"**.
 
 
 ## Tecnologías Utilizadas
@@ -139,13 +141,13 @@ Reducir la tasa de abandono al primer mes del 65% al 45% mediante la identificac
 - **Excel** para análisis preliminares
 - **Git/GitHub** para control de versiones
 
-## 🛠️ Cómo Ejecutar el Proyecto
+## Cómo Ejecutar el Proyecto
 
 1. **Clonar el repositorio**: `git clone https://github.com/tu-usuario/Proyecto-FitnessApp.git`
 2. **Instalar dependencias**: `pip install -r requirements.txt`
 3. **Ejecución**: Abrir los cuadernos en la carpeta `/notebooks` y ejecutarlos en orden numérico (01 al 06) para reproducir el análisis completo.
 
-## 🏆 Conclusiones de Negocio
+## Conclusiones de Negocio
 - **Aha! Moment**: El contenido de **HIIT y Fuerza** es el principal motor de retención real.
 - **Fuga Crítica**: Se identificó una desconexión total en el Día 0; la app depende de estímulos de último momento (Día 7) para retener usuarios.
 - **Estrategia**: Se recomienda adelantar las notificaciones de reactivación al Día 3 para quebrar el patrón de abandono detectado.
